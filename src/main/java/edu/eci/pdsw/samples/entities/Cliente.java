@@ -20,13 +20,15 @@ public class Cliente implements Serializable{
     private String telefono;
     private String direccion;
     private String email;
-    private boolean vetado;
+    private int vetado;
     private ArrayList<ItemRentado> rentados; 
 
     public Cliente() {
+        this.vetado = 0;
+        this.rentados = new ArrayList<>();
     }
 
-    public Cliente(String nombre, long documento, String telefono, String direccion, String email, boolean vetado, ArrayList<ItemRentado> rentados) {   
+    public Cliente(String nombre, long documento, String telefono, String direccion, String email, int vetado, ArrayList<ItemRentado> rentados) {   
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
@@ -43,7 +45,7 @@ public class Cliente implements Serializable{
         this.telefono = telefono;
         this.direccion = direccion;
         this.email = email;
-        this.vetado = false;
+        this.vetado = 0;
         this.rentados = new ArrayList<>();
     }
 
@@ -88,11 +90,11 @@ public class Cliente implements Serializable{
         this.email = email;
     }
 
-    public boolean isVetado() {
+    public int isVetado() {
         return vetado;
     }
 
-    public void setVetado(boolean betado) {
+    public void setVetado(int betado) {
         this.vetado = betado;
     }
 

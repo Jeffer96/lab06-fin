@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper">
+    
+    
+    
+    <insert parameterType="map" id="insertarItem" >
+        insert into VI_ITEMS  (id,nombre,descripcion,fechaLanzamiento,tarifaxDia,formatoRenta,genero,TIPOITEM_id) 
+        values (#{item.id},#{item.nombre},#{item.descripcion},#{item.fechaLanzamiento},#{item.tarifaxDia},#{item.formatoRenta},#{item.genero},#{item.tipo.id});
+    </insert>
+    
+  
+    
+    <select parameterType="map" id="consultarItem" resultMap="ItemResult">
+        select 
+        
+        i.id ,
+        i.nombre ,
+        i.descripcion ,
+        i.fechaLanzamiento,
+        i.tarifaxdia ,
+        i.formatorenta,
+        i.genero,    
+            
+        ti.id as TI_id,
+        ti.descripcion as TI_descripcion 
+
+        FROM VI_ITEMS as i 
+        left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id  
+        WHERE i.id=#{idItem};
+    </select>
+        
+    
+    
+    <select parameterType="map" id="consultarItemsDisponibles" resultMap="ItemResult">
+       select * FROM VI_ITEMS  where id not in(select ITEMS_id FROM VI_ITEMRENTADO)
+    </select>
+    
+    <resultMap type='ItemRentado' id='ItemRentadoResult'>
+        <id property='id' column='id'/>
+        <result property='fechainiciorenta' column='fechainiciorenta'/>
+        <result property='fechafinrenta' column='fechafinrenta'/> 
+        <association property="item" javaType="Item" columnPrefix='i_' resultMap='ItemResult'></association>      
+    </resultMap>
+
+    <resultMap type='Item' id='ItemResult'>
+        <id property='id' column='id'/>
+        <result property='nombre' column='nombre'/>
+        <result property='descripcion' column='descripcion'/>
+        <result property='fechaLanzamiento' column='fechaLanzamiento'/>
+        <result property='tarifaxDia' column='tarifaxdia'/>
+        <result property='formatoRenta' column='formatorenta'/>
+        <result property='genero' column='genero'/>
+        <association property="tipo" javaType="TipoItem" columnPrefix='ti_' resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult'></association>      
+    </resultMap>
+    
+</mapper>
