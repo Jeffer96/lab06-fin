@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.sampleprj.dao.mybatis;
 
+
 import com.google.inject.Inject;
 import edu.eci.pdsw.sampleprj.dao.ClienteDAO;
 import edu.eci.pdsw.sampleprj.dao.PersistenceException;
@@ -29,7 +30,7 @@ public class MyBATISClienteDAO implements ClienteDAO{
             System.out.println(client.getDocumento());
             clienteMapper.agregarCliente(client);
         }
-        catch(org.apache.ibatis.exceptions.PersistenceException e){
+            catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al registrar el Cliente "+client.toString(),e);
         }        
         

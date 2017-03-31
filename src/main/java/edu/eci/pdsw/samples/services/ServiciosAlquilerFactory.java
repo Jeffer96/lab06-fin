@@ -19,7 +19,6 @@ import edu.eci.pdsw.sampleprj.dao.mybatis.MyBATISClienteDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBATISItemDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBATISItemRentadoDAO;
 import edu.eci.pdsw.sampleprj.dao.mybatis.MyBATISTipoItemDAO;
-import edu.eci.pdsw.samples.entities.Cliente;
 
 /**
  *
@@ -27,7 +26,7 @@ import edu.eci.pdsw.samples.entities.Cliente;
  */
 public class ServiciosAlquilerFactory {
 
-    private static final ServiciosAlquilerFactory instance = new ServiciosAlquilerFactory();
+    private static final ServiciosAlquilerFactory instances = new ServiciosAlquilerFactory();
     
     private static Injector injector;
     
@@ -112,6 +111,6 @@ public class ServiciosAlquilerFactory {
         return testInjector.getInstance(TipoItemDAO.class);
     }
     public static ServiciosAlquilerFactory getInstance(){
-        return instance;
+        return instances;
     }
 }

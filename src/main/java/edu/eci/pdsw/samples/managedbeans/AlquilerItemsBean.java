@@ -5,7 +5,7 @@
  */
 package edu.eci.pdsw.samples.managedbeans;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+
 import edu.eci.pdsw.samples.entities.Cliente;
 import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.ItemRentado;
@@ -13,17 +13,11 @@ import edu.eci.pdsw.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquiler;
 import edu.eci.pdsw.samples.services.ServiciosAlquilerFactory;
 import java.io.Serializable;
-import java.sql.Date;
+
 import java.time.LocalDate;
-import java.text.SimpleDateFormat;
-import static java.time.Instant.now;
-import static java.time.LocalDate.now;
-import java.time.Month;
-import java.util.LinkedList;
+
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.binding.Bindings;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
