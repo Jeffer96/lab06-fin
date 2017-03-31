@@ -26,7 +26,7 @@ public class MyBATISTipoItemDAO implements TipoItemDAO{
     @Override
     public TipoItem load(int id) throws PersistenceException {
         try{
-            return tipoItemMapper.getTipoItem(id);
+            return tipoItemMapper.consultarTipoItem(id);
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al consultar el item "+id,e);
@@ -37,7 +37,7 @@ public class MyBATISTipoItemDAO implements TipoItemDAO{
     @Override
     public List<TipoItem> loadAll() throws PersistenceException {
         try{
-            return tipoItemMapper.getTiposItems();
+            return tipoItemMapper.consultarTiposItems();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al consultar el item "+ e);

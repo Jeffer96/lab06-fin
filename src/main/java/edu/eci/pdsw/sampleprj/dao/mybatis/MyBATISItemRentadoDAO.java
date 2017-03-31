@@ -48,7 +48,7 @@ public class MyBATISItemRentadoDAO implements ItemRentadoDAO{
     @Override
     public List<ItemRentado> loadAll() throws PersistenceException {
         try{
-            return itemMapper.getItemsRentados();
+            return itemMapper.consultarItemsRentados();
         }
         catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al consultar los items "+e);
